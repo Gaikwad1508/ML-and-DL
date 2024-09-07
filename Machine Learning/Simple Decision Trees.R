@@ -115,11 +115,11 @@ MSE2random <- mean((test$random-test$Collection)^2)
 
 #########################################  COMPLETE THE CODE LATER NOW IT HAS MANT ERRORS   ###############################################
 
-'''install.packages("gbm")       #Installing gradient boosting model
-library("gbm")
-set.seed(0)
-boosting=gbm(Collection~., data=train, distribution = "gaussian", n.trees=5000, interaction.depth=4, shrinkage=0.2, verbose = F)
-summary(df$X3D_available)
+#install.packages("gbm")       #Installing gradient boosting model
+#library("gbm")
+#set.seed(0)
+#boosting=gbm(Collection~., data=train, distribution = "gaussian", n.trees=5000, interaction.depth=4, shrinkage=0.2, verbose = F)
+#summary(df$X3D_available)
 
 # For regression purpose use distribution="gaussian".
 # For classification purpose use distribution="bernoulli"
@@ -127,8 +127,10 @@ summary(df$X3D_available)
 # Shrinkage is lambda which is the rate of learning and how much is less the model will learn more well
 # verbose = F is used to give just final output, not gives output at all the stages or at each iterations. 
 
-describe(df) '''
-############################################################################################################################################
+#describe(df)
+
+############################################################################################################################################a
+
 install.packages("adabag")
 library(adabag)
 
@@ -146,9 +148,27 @@ text(t1, pretty = 100)
 
 ########         XG Boosting         ##########
 # For performing XG boost in r we have to convert our data in the format dematrix
-install.packages("xgboost")
-library(xgboost)
+
+#install.packages("xgboost")
+#library(xgboost)
 
 # Convert the all values from train dataset as dependent and independent in the form of boolean
-trainY = trainc$Start_Tech_Oscar == "1"
-trainX = model.matrix(Start_Tech_Oscar~.-1, data=trainc)
+#trainY = trainc$Start_Tech_Oscar == "1"
+#trainX = model.matrix(Start_Tech_Oscar~.-1, data=trainc)       #This a way to create dummy variables at same time for all dataset. as we know if 3 classes are there so 2 dummy variables are created hence -1 is used to delete first created dummy variale
+#trainX <- trainX[, -12]     #there is dumber of dummy variables created equal to no. of classes in X3D_available variable so delete it
+
+#testY = testc$Start_Tech_Oscar == "1"
+#testX = model.matrix(Start_Tech_Oscar~.-1, data=testc)
+#testX = testX[, -12]
+
+#Xmatrix = xgb.DMatrix(data = trainX, label = trainY)
+#Xmatrix_t = xgb.DMatrix(data = testX, label = testY)
+
+#Xgboosting = xgboost(data = Xmatrix, # the data
+#                     nrounds = 50, # max no. of boosting iterations
+#                    objective = 'multi:softmax', eta = 0.3, num_class = 2, max_depth = 100)
+# objective parameter can have different values as per model selection to train
+# eta value controls the learning rate
+
+#xgpred = predict(Xgboosting, Xmatrix_t)
+#table(testY, xgpred)
